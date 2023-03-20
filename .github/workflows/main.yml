@@ -20,13 +20,12 @@ jobs:
     - name: Login to AWS ECR
       run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 779841249082.dkr.ecr.us-east-1.amazonaws.com
-
     - name: Build and push Docker image to ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: githubrunner
+        ECR_REPOSITORY: github
         IMAGE_TAG: latest
       run: |
-          docker buildx build -t githubrunner .
-          docker tag githubrunner:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
-          docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
+          docker build -f Services/Login/Login.API/Dockerfile -t github .
+          docker tag github:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/github:latest
+          docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/github:latest
