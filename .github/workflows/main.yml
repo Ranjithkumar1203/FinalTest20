@@ -26,6 +26,6 @@ jobs:
         ECR_REPOSITORY: github
         IMAGE_TAG: latest
       run: |
-          docker build -f Services/Login/Login.API/Dockerfile -t github .
+          docker buildx build -t githubrunner:latest Services/Login/Login.API/
           docker tag github:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/github:latest
           docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/github:latest
