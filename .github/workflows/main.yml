@@ -27,6 +27,6 @@ jobs:
         IMAGE_TAG: latest
       run: |
           docker buildx build .
-          docker buildx build Services/Login/Login.API/Dockerfile -t githubrunner .
+          docker buildx build -f Services/Login/Login.API/Dockerfile -t githubrunner .
           docker tag githubrunner:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
           docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
