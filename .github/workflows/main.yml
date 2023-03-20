@@ -26,6 +26,6 @@ jobs:
         ECR_REPOSITORY: githubrunner
         IMAGE_TAG: latest
       run: |
-          docker buildx build -f Dockerfile -t githubrunner .
+          docker buildx build . -t githubrunner:latest
           docker tag githubrunner:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
           docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
