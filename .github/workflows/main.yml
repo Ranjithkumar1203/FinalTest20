@@ -25,4 +25,3 @@ jobs:
           docker build -t githubrunner .
           docker tag githubrunner:latest 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
           docker push 779841249082.dkr.ecr.us-east-1.amazonaws.com/githubrunner:latest
-          docker system prune --all --force
